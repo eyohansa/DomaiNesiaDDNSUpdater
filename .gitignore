@@ -1,6 +1,10 @@
+.vs/
 .vscode/
 bin/
 obj/
+
+*.suo
+*.user
 
 appsettings.Development.json
 appsettings.Production.json
