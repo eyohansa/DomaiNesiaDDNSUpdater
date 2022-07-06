@@ -3,15 +3,16 @@ namespace DomaiNesiaDDNSUpdater;
 public class DdnsService
 {
     readonly IConfiguration _config;
+    readonly HttpClient _http;
 
     public DdnsService(IConfiguration config)
     {
         _config = config;
+        _http = new HttpClient();
     }
 
     public async Task Update()
     {
-        using var http = new HttpClient();
-        await http.SendAsync(new HttpRequestMessage(HttpMethod.Get, _config["DdnsUrl"]));
+        await _http.GetAsync(_config["DdnsUrl"]);
     }
 }
